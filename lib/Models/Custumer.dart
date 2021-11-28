@@ -1,7 +1,19 @@
-class Customer {
-  final String name;
-  final String address;
-  final String mobileNo;
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-  Customer({this.name, this.address, this.mobileNo});
+class Customer {
+  static const ID = "id";
+  static const NAME = "name";
+  static const ADDRESS = "address";
+  static const MOBILENO = "mobileNo";
+
+  String _name;
+  String _address;
+  String _id;
+  String _mobileNo;
+
+  String get name => _name;
+  String get address => _address;
+  String get id => _id;
+  String get mobileNo => _mobileNo;
+
 }

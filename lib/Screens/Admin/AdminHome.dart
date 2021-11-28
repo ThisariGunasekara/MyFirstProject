@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lavajava/Screens/Services/auth.dart';
 import 'package:lavajava/Screens/home.dart';
+import 'package:lavajava/Screens/Services/manageProductAdmin.dart';
 
 class AdminHome extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class _AdminHomeState extends State<AdminHome> {
   final AuthServices _auth = AuthServices();
 
   bool isMenu = false;
+  bool isOrder = false;
   bool isFeedback = false;
 
   Future<bool> logoutDialog() {
@@ -42,12 +44,11 @@ class _AdminHomeState extends State<AdminHome> {
 
   Widget Menu() {
     isMenu = true;
-    return ListView(
-      children: <Widget>[],
-    );
+    return ManageProductAdmin();
   }
 
   Widget Order() {
+    isOrder = true;
     return ListView(
       children: <Widget>[],
     );
@@ -125,9 +126,14 @@ class _AdminHomeState extends State<AdminHome> {
             backgroundColor: Colors.orange,
             onPressed: () {
               if (isMenu == true) {
+                Menu();
+              }
+              if (isFeedback == true) {
+                Feedback();
+              }
+              if (isOrder == true) {
                 Order();
               }
-              if (isFeedback == true) {}
             },
             child: Icon(Icons.add),
           ),

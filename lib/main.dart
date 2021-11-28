@@ -6,6 +6,9 @@ import 'package:lavajava/Screens/Authentication/adminSignin.dart';
 import 'package:lavajava/Screens/Authentication/signin.dart';
 import 'package:lavajava/Screens/Customer/CustomerHome.dart';
 import 'package:lavajava/Screens/Customer/menu.dart';
+import 'package:lavajava/Screens/Images/uploadImage.dart';
+import 'package:lavajava/Screens/Services/manageProductAdmin.dart';
+import 'package:lavajava/Screens/Services/productFirebaseDemo.dart';
 import 'package:lavajava/Screens/home.dart';
 
 void main() async {
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
         //StreamProvider<User>.value(
         //value: AuthServices().user,
         // child: MaterialApp(
-        home: Home(),
+        home: AdminHome(),
         routes: <String, WidgetBuilder>{
           "Home": (BuildContext context) => Home(),
           "CustomerLogin": (BuildContext context) => SignIn(),
@@ -32,6 +35,7 @@ class MyApp extends StatelessWidget {
           "AdminLogin": (BuildContext context) => AdminSignIn(),
           "AdminHome": (BuildContext context) => AdminHome(),
           "Menu": (BuildContext context) => FoodMenu(),
+          "UploadImage": (BuildContext context) => imageUpload(),
         });
   }
 }

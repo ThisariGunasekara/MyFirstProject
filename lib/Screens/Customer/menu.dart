@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lavajava/Shared/screenNavigation.dart';
 import 'package:lavajava/Widgets/Categories.dart';
 import 'package:lavajava/Widgets/CustomText.dart';
 import 'package:lavajava/Widgets/FeaturedProducts.dart';
 import 'package:lavajava/Widgets/buttonNevigationIcons.dart';
+
+import 'cart.dart';
 
 class FoodMenu extends StatefulWidget {
   @override
@@ -238,6 +241,9 @@ class _FoodMenuState extends State<FoodMenu> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(7, 5, 7, 5),
                 child: BottomNavIcon(
+                  onTap: () {
+                    changeScreen(context, ShoppingCart());
+                  },
                   icon: Icons.shopping_cart_outlined,
                   name: 'Cart',
                 ),

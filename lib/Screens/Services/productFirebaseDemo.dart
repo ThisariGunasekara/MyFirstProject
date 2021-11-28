@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:lavajava/Models/Products.dart';
 import 'package:lavajava/Widgets/CustomText.dart';
 
@@ -35,10 +34,11 @@ class _ProductFirebaseDemoState extends State<ProductFirebaseDemo> {
   addProduct() {
     Product product = Product(
       name: productCategoryContoller.text,
+      image: "image",
       description: productDescriptionContoller.text,
+      wishList: false,
       price: int.parse(productPriceContoller.text),
       category: productDescriptionContoller.text,
-      wishList: false,
     );
 
     try {
@@ -54,8 +54,8 @@ class _ProductFirebaseDemoState extends State<ProductFirebaseDemo> {
     }
   }
 
-  updateProcuct(Product product, String name, String description, int price,
-      category, bool wishlist, String image) {
+  updateProcuct(Product product, String name, String image, String description,
+      bool wishlist, int price, String category) {
     try {
       FirebaseFirestore.instance.runTransaction((transaction) async {
         await transaction.update(product.documentReference, {
@@ -73,18 +73,21 @@ class _ProductFirebaseDemoState extends State<ProductFirebaseDemo> {
   }
 
   updateIfEditing() {
-    updateProcuct(
+    if (isEditing) {
+      updateProcuct(
         currentProduct,
+        "image",
         productNameContoller.text,
         productDescriptionContoller.text,
+        false,
         int.parse(productPriceContoller.text),
         productCategoryContoller.text,
-        false,
-        "image");
+      );
 
-    setState(() {
-      isEditing = false;
-    });
+      setState(() {
+        isEditing = false;
+      });
+    }
   }
 
   deleteProduct(Product product) {
@@ -126,61 +129,23 @@ class _ProductFirebaseDemoState extends State<ProductFirebaseDemo> {
             borderRadius: BorderRadius.circular(10)),
         child: SingleChildScrollView(
           child: ListTile(
-            title: Row(
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    CustomText(text: product.name),
-                    Divider(),
-                    CustomText(
-                      text: product.description,
-                      family: "",
-                      color: Colors.grey,
-                    ),
-                    SizedBox(height: 5),
-                    CustomText(text: "Rs:${product.price}")
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Container(
-                      height: 50.0,
-                      width: double.infinity,
-                      // color: Colors.yellow[800],
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(50)),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            // colorFilter: ColorFilter.mode(
-                            //     Colors.black.withOpacity(0.75), BlendMode.darken),
-                            image: AssetImage(
-                              "asset/${product.image}",
-                            ),
-                          )),
-                    ),
-                    // Align(
-                    //     alignment: Alignment.centerLeft,
-                    //     child: RaisedButton(
-                    //       onPressed: () {
-                    //         // Navigator.pushReplacementNamed(
-                    //         //     context, "Home");
-                    //       },
-                    //       color: Colors.yellow[800],
-                    //       child: Row(
-                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //         children: <Widget>[
-                    //           Icon(
-                    //             Icons.delete,
-                    //             color: Colors.red,
-                    //           )
-                    //         ],
-                    //       ),
-                    //     )),
-                  ],
-                )
-              ],
-            ),
+            title: Column(children: <Widget>[
+              Row(children: <Widget>[
+                CustomText(text: product.name),
+              ]),
+              Divider(),
+              Row(
+                children: [
+                  CustomText(
+                    text: product.description,
+                    family: "",
+                    color: Colors.grey,
+                  ),
+                ],
+              ),
+              SizedBox(height: 5),
+              CustomText(text: "Rs:${product.price}")
+            ]),
             trailing: IconButton(
               icon: Icon(
                 Icons.delete,
@@ -230,6 +195,135 @@ class _ProductFirebaseDemoState extends State<ProductFirebaseDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Manage Products"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              setState(() {
+                texiFieldVisibility = !texiFieldVisibility;
+              });
+            },
+          )
+        ],
+      ),
+      body: Container(
+        padding: EdgeInsets.all(19),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            texiFieldVisibility
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          TextFormField(
+                            controller: productNameContoller,
+                            decoration: InputDecoration(labelText: "Name"),
+                          ),
+                          TextFormField(
+                            controller: productDescriptionContoller,
+                            decoration:
+                                InputDecoration(labelText: "Description"),
+                          ),
+                          TextFormField(
+                            controller: productPriceContoller,
+                            decoration: InputDecoration(labelText: "Price"),
+                          ),
+                          TextFormField(
+                            controller: productCategoryContoller,
+                            decoration: InputDecoration(labelText: "Category"),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      button()
+                    ],
+                  )
+                : Container(),
+            SizedBox(
+              height: 20,
+            ),
+            CustomText(text: "Products"),
+            SizedBox(
+              height: 20,
+            ),
+            Flexible(child: buildBody(context))
+          ],
+        ),
+      ),
+    );
+    /*ListView(
+      children: [
+        Container(
+          padding: EdgeInsets.all(19),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              texiFieldVisibility ? Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget> [
+                  Column(
+                    children: [
+                      TextFormField(
+                        controller: productNameContoller,
+                        decoration: InputDecoration(
+                          labelText: "Product name"
+                        ),
+                      ),
+                      TextFormField(
+                        controller: productDescriptionContoller,
+                        decoration: InputDecoration(
+                          labelText: "Description",
+                        ),
+                      ),
+
+                      TextFormField(
+                        controller: productPriceContoller,
+                        decoration: InputDecoration(
+                          labelText: "Price",
+                        ),
+                      ),
+                      TextFormField(
+                        controller: productCategoryContoller,
+                        decoration: InputDecoration(
+                          labelText: "Category",
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                        height: 10,
+                      ),
+                      button()
+                ],
+
+              ):Container(),
+              SizedBox(
+                height: 10,
+              ),
+              CustomText(text: "Meals"),
+              SizedBox(
+                height: 20,
+              ),
+              Flexible(child: buildBody(context)),
+
+
+            ],
+          ),
+
+        ),
+
+      ],
+    );*/
   }
 }

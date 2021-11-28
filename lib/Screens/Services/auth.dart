@@ -40,6 +40,14 @@ class AuthServices {
     }
   }
 
+  Future<String> getCirrentID() async {
+    return (await _auth.currentUser).uid;
+  }
+
+  Future getCirrentUser() async {
+    return (await _auth.currentUser);
+  }
+
 //register with email and passward
   Future registerWithEmailAndPassword(String email, String password,
       String name, String address, String mobileNo) async {

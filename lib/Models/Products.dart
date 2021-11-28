@@ -25,9 +25,9 @@ class Product {
   //FirebaseFirestore.instance.collection('product');
 
   Product.fromMap(Map<String, dynamic> map, {this.documentReference}) {
-    name = map['pname'];
-    image = map['pimage'];
-    description = map['pdescription'];
+    name = map['pName'];
+    image = map['pImage'];
+    description = map['pDescription'];
     wishList = map['wishList'];
     price = map['price'];
     category = map['pcategory'];
