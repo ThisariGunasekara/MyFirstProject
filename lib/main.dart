@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         //StreamProvider<User>.value(
         //value: AuthServices().user,
         // child: MaterialApp(
-        home: FoodMenu(),
+        home: AdminHome(),
         routes: <String, WidgetBuilder>{
           "Home": (BuildContext context) => Home(),
           "CustomerLogin": (BuildContext context) => SignIn(),
@@ -43,8 +43,8 @@ class MyApp extends StatelessWidget {
           "UploadImage": (BuildContext context) => imageUpload(),
           "ConfirmOrder": (BuildContext context) => ConfirmOrder(),
           "OrderSucess": (BuildContext context) => OrderSucess(),
-          "CustomerFeedback" : (BuildContext context) => CustomerFeedback(),
-          "ShoppingCart" :  (BuildContext context) => ShoppingCart()
+          "CustomerFeedback": (BuildContext context) => CustomerFeedback(),
+          "ShoppingCart": (BuildContext context) => ShoppingCart()
         });
   }
 }

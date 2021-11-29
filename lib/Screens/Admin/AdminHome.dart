@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lavajava/Screens/Admin/manageFeedbacks.dart';
+import 'package:lavajava/Screens/Admin/manageOrder.dart';
 import 'package:lavajava/Screens/Services/auth.dart';
 import 'package:lavajava/Screens/home.dart';
 import 'package:lavajava/Screens/Admin/manageProductAdmin.dart';
@@ -50,16 +52,12 @@ class _AdminHomeState extends State<AdminHome> {
 
   Widget Order() {
     isOrder = true;
-    return ListView(
-      children: <Widget>[],
-    );
+    return ManageOrder();
   }
 
   Widget Feedback() {
     isFeedback = true;
-    return ListView(
-      children: <Widget>[],
-    );
+    return ManageFeedbacks();
   }
 
   @override

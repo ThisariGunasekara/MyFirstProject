@@ -41,7 +41,7 @@ class _ManageProductAdminState extends State<ManageProductAdmin> {
     );
   }
 
-  button() {
+  button1() {
     return SizedBox(
       width: double.infinity,
       child: OutlineButton(
@@ -65,13 +65,13 @@ class _ManageProductAdminState extends State<ManageProductAdmin> {
     );
   }
 
-  button1() {
+  button() {
     return SizedBox(
       width: double.infinity,
       child: OutlineButton(
           child: Text("UPLOAD IMAGE"),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, "UploadImage");
+            // Navigator.pushReplacementNamed(context, "UploadImage");
           }),
     );
   }
