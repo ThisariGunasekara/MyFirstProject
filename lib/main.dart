@@ -7,6 +7,7 @@ import 'package:lavajava/Screens/Authentication/adminSignin.dart';
 import 'package:lavajava/Screens/Authentication/signin.dart';
 import 'package:lavajava/Screens/Customer/CustomerHome.dart';
 import 'package:lavajava/Screens/Customer/Customerfeedback.dart';
+import 'package:lavajava/Screens/Customer/cart.dart';
 import 'package:lavajava/Screens/Customer/menu.dart';
 import 'package:lavajava/Screens/Customer/orderSuccess.dart';
 import 'package:lavajava/Screens/Admin/manageProductAdmin.dart';
@@ -42,7 +43,8 @@ class MyApp extends StatelessWidget {
           "UploadImage": (BuildContext context) => imageUpload(),
           "ConfirmOrder": (BuildContext context) => ConfirmOrder(),
           "OrderSucess": (BuildContext context) => OrderSucess(),
-          "CustomerFeedback" : (BuildContext context) => CustomerFeedback()
+          "CustomerFeedback" : (BuildContext context) => CustomerFeedback(),
+          "ShoppingCart" :  (BuildContext context) => ShoppingCart()
         });
   }
 }

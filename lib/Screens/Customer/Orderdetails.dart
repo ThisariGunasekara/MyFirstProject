@@ -25,8 +25,6 @@ class _DetailsState extends State<Details> {
               Carousel(
                 images: [
                   AssetImage('asset/${widget.product.image}'),
-                  AssetImage('asset/${widget.product.image}'),
-                  AssetImage('asset/${widget.product.image}')
                 ],
                 dotBgColor: Colors.black,
                 dotColor: Colors.white,
@@ -47,7 +45,9 @@ class _DetailsState extends State<Details> {
                     padding: const EdgeInsets.only(top: 30),
                     child: IconButton(
                       icon: Icon(Icons.shopping_cart),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, "ShoppingCart");
+                      },
                     ),
                   )
                 ],
@@ -88,8 +88,13 @@ class _DetailsState extends State<Details> {
                   ),
                   child: Padding(
                       padding: const EdgeInsets.fromLTRB(28, 12, 24, 12),
-                      child: CustomText(
-                          text: "Add to cart", color: Colors.white, size: 24)),
+                      child: GestureDetector(
+                        onTap: () {
+                          //methana tap kalama cart ekata yanna oni product eka
+                        },
+                        child: CustomText(
+                            text: "Add to cart", color: Colors.white, size: 24),
+                      )),
                 ),
               ),
               Padding(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lavajava/Screens/Customer/details.dart';
+import 'package:lavajava/Screens/Customer/Orderdetails.dart';
 import 'package:lavajava/Shared/screenNavigation.dart';
 import 'package:lavajava/Widgets/CustomText.dart';
 import 'package:lavajava/Models/Products.dart';
