@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:lavajava/Screens/Admin/AdminHome.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:lavajava/Screens/Admin/Images/uploadImage.dart';
 import 'package:lavajava/Screens/Authentication/Register.dart';
 import 'package:lavajava/Screens/Authentication/adminSignin.dart';
 import 'package:lavajava/Screens/Authentication/signin.dart';
 import 'package:lavajava/Screens/Customer/CustomerHome.dart';
+import 'package:lavajava/Screens/Customer/Customerfeedback.dart';
 import 'package:lavajava/Screens/Customer/menu.dart';
-import 'package:lavajava/Screens/Images/uploadImage.dart';
-import 'package:lavajava/Screens/Services/manageProductAdmin.dart';
+import 'package:lavajava/Screens/Customer/orderSuccess.dart';
+import 'package:lavajava/Screens/Admin/manageProductAdmin.dart';
 import 'package:lavajava/Screens/Services/productFirebaseDemo.dart';
 import 'package:lavajava/Screens/home.dart';
+
+import 'Screens/Customer/confirmOrder.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +30,7 @@ class MyApp extends StatelessWidget {
         //StreamProvider<User>.value(
         //value: AuthServices().user,
         // child: MaterialApp(
-        home: AdminHome(),
+        home: FoodMenu(),
         routes: <String, WidgetBuilder>{
           "Home": (BuildContext context) => Home(),
           "CustomerLogin": (BuildContext context) => SignIn(),
@@ -36,6 +40,9 @@ class MyApp extends StatelessWidget {
           "AdminHome": (BuildContext context) => AdminHome(),
           "Menu": (BuildContext context) => FoodMenu(),
           "UploadImage": (BuildContext context) => imageUpload(),
+          "ConfirmOrder": (BuildContext context) => ConfirmOrder(),
+          "OrderSucess": (BuildContext context) => OrderSucess(),
+          "CustomerFeedback" : (BuildContext context) => CustomerFeedback()
         });
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lavajava/Models/Products.dart';
-import 'package:lavajava/Screens/Images/uploadImage.dart';
+import 'package:lavajava/Screens/Admin/Images/uploadImage.dart';
 import 'package:lavajava/Widgets/CustomText.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -71,7 +71,7 @@ class _ManageProductAdminState extends State<ManageProductAdmin> {
       child: OutlineButton(
           child: Text("UPLOAD IMAGE"),
           onPressed: () {
-            // Navigator.pushReplacementNamed(context, "UploadImage");
+            Navigator.pushReplacementNamed(context, "UploadImage");
           }),
     );
   }

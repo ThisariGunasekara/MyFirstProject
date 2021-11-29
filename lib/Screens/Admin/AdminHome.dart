@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lavajava/Screens/Services/auth.dart';
 import 'package:lavajava/Screens/home.dart';
-import 'package:lavajava/Screens/Services/manageProductAdmin.dart';
+import 'package:lavajava/Screens/Admin/manageProductAdmin.dart';
 
 class AdminHome extends StatefulWidget {
   @override
@@ -44,6 +44,7 @@ class _AdminHomeState extends State<AdminHome> {
 
   Widget Menu() {
     isMenu = true;
+    //
     return ManageProductAdmin();
   }
 

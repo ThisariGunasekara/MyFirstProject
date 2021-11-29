@@ -92,7 +92,10 @@ class _ShoppingCartState extends State<ShoppingCart> {
             child: OutlineButton(
                 child: Text("PLACE ORDER"),
                 color: Colors.yellow,
-                onPressed: () {}),
+                onPressed: () {
+                  //order eka place kalama address eka illana screen ekata gihin e address ekath ekka order details order table ehata yanna oni user id eka yatathe
+                  Navigator.pushReplacementNamed(context, "ConfirmOrder");
+                }),
           )
         ],
       ),
