@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         //StreamProvider<User>.value(
         //value: AuthServices().user,
         // child: MaterialApp(
-        home: AdminHome(),
+        home: Home(),
         routes: <String, WidgetBuilder>{
           "Home": (BuildContext context) => Home(),
           "CustomerLogin": (BuildContext context) => SignIn(),

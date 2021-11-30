@@ -6,7 +6,7 @@ import 'package:lavajava/Models/Category.dart';
 List<Category> categoriesList = [
   Category(name: 'Meals', image: 'rice.jpg'),
   Category(name: 'Fast Food', image: 'burger.jpg'),
-  //Category(name: 'Meals', image: 'rice.jpg'),
+  
   Category(name: 'Desserts', image: 'nasi.jpg'),
   Category(name: 'Beverages', image: 'hotdog.jpg'),
 ];
